@@ -6,7 +6,7 @@ A powerful, GUI-based Python utility designed to effortlessly filter, sort, copy
 
 **Smart Categories:** Pre-defined categories (Images, Videos, Audio, Documents, Archives) for quick, one-click bulk selection.
 
-**Auto-Sorting:** Automatically creates subfolders in your target directory based on file extensions (e.g., /JPG_Files, /PDF_Files) to keep your destination clean.
+**Auto-Sorting:** Automatically creates subfolders in your target directory based on file extensions (e.g., JPG, PDF) to keep your destination clean.
 
 **Precision Control:** Choose to process All files, a specific Percentage (%), or an Exact Number.
 

@@ -35,7 +35,7 @@ class FileOrganizerApp:
         self.target_path = tk.StringVar()
         self.operation = tk.StringVar(value="copy")
         self.amount_type = tk.StringVar(value="all") 
-        self.amount_value = tk.StringVar(value="") # Leave blank initially since "all" is default
+        self.amount_value = tk.StringVar(value="")
         self.selection_method = tk.StringVar(value="top")
         self.auto_sort = tk.BooleanVar(value=False) 
         
@@ -52,15 +52,15 @@ class FileOrganizerApp:
             "Archives": {"exts": ['.zip', '.rar', '.7z', '.tar', '.gz'], "var": tk.BooleanVar(value=False), "count_label": tk.StringVar(value="")}
         }
 
-        # Dynamic Listeners
+        # dynamic listeners
         self.source_path.trace_add("write", self.update_directory_stats)
-        self.amount_type.trace_add("write", self.toggle_amount_entry) # Listens for dropdown changes
+        self.amount_type.trace_add("write", self.toggle_amount_entry)
         
         self.setup_ui()
-        self.toggle_amount_entry() # Run once on startup to set initial disabled state
+        self.toggle_amount_entry() # Run once 
 
     def setup_ui(self):
-        # --- 1. Top Section ---
+        # ---  Top ---
         dir_frame = ttk.LabelFrame(self.root, text="1. Select Directories", padding=(10, 5))
         dir_frame.grid(row=0, column=0, sticky="ew", padx=10, pady=5)
         dir_frame.columnconfigure(1, weight=1) 
@@ -75,7 +75,7 @@ class FileOrganizerApp:
         ttk.Entry(dir_frame, textvariable=self.target_path).grid(row=1, column=1, sticky="ew", padx=5)
         ttk.Button(dir_frame, text="Browse", command=self.browse_target).grid(row=1, column=2)
 
-        # --- 2. Middle Section ---
+        # ---  Middle  ---
         cat_frame = ttk.LabelFrame(self.root, text="2. Select Formats", padding=(10, 5))
         cat_frame.grid(row=1, column=0, sticky="nsew", padx=10, pady=5)
         cat_frame.columnconfigure(1, weight=2) 
@@ -100,7 +100,7 @@ class FileOrganizerApp:
         for i in range(3):
             self.ext_scroll_frame.scrollable_frame.columnconfigure(i, weight=1)
 
-        # --- 3. Bottom Section ---
+        # ---  Bottom  ---
         control_frame = ttk.LabelFrame(self.root, text="3. Operation Settings & Execution", padding=(10, 5))
         control_frame.grid(row=2, column=0, sticky="ew", padx=10, pady=10)
         
@@ -110,7 +110,7 @@ class FileOrganizerApp:
         ttk.Label(filter_frame, text="Amount:").pack(side="left")
         ttk.Combobox(filter_frame, textvariable=self.amount_type, values=["all", "percent", "number"], state="readonly", width=8).pack(side="left", padx=5)
         
-        # Saved to a variable (self.amount_entry) so we can change its state later
+        # saved to a variable 
         self.amount_entry = ttk.Entry(filter_frame, textvariable=self.amount_value, width=6)
         self.amount_entry.pack(side="left", padx=5)
         
@@ -125,7 +125,7 @@ class FileOrganizerApp:
         ttk.Label(exec_frame, textvariable=self.total_ready_files, font=("", 10, "bold"), foreground="green").pack(side="left")
         ttk.Button(exec_frame, text="EXECUTE OPERATION", command=self.execute_operation, style="Accent.TButton", width=25).pack(side="right")
 
-    # --- Sync Logic Methods ---
+    # --- sync logic methods ---
     def toggle_amount_entry(self, *args):
         """Disables the number input box if 'All' is selected."""
         if hasattr(self, 'amount_entry'):
@@ -133,7 +133,7 @@ class FileOrganizerApp:
                 self.amount_entry.config(state="disabled")
             else:
                 self.amount_entry.config(state="normal")
-                # Optional: pre-fill a default number if it's empty so the user knows what to do
+
                 if not self.amount_value.get():
                     self.amount_value.set("10") 
 

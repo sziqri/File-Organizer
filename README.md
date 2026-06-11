@@ -2,7 +2,7 @@
 A powerful, GUI-based Python utility designed to effortlessly filter, sort, copy, and move files between directories. Whether you are preparing datasets for machine learning, organizing forensic evidence, or just cleaning up a messy downloads folder, this tool provides granular control over how your files are processed.
 
 ## Features
-Dynamic Extension Detection: Automatically scans the source directory and lists all available file extensions for precise selection.
+**Dynamic Extension Detection:** Automatically scans the source directory and lists all available file extensions for precise selection.
 
 **Smart Categories:** Pre-defined categories (Images, Videos, Audio, Documents, Archives) for quick, one-click bulk selection.
 
